@@ -71,7 +71,7 @@ impl RepositorySQLite {
     fn find_all_in_sqlite(&self) -> Result<Vec<Track>, ()> {
         let statement = self
             .connection
-            .prepare("SELECT * FROM tracks")
+            .prepare("SELECT * FROM tracks ORDER BY end ASC")
             .unwrap();
         let mut cursor = statement.into_cursor();
         let mut tasks = vec![];
